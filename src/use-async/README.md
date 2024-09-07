@@ -10,12 +10,13 @@ function useAsync<T>(
 A hook that runs an async function and returns the result and status in a readonly source.
 
 > **Warning:**  
-> To track dependencies, you most only call the sources instantly in the callback, not in the Promise, as this can mess with vide reactivity.
+> To track dependencies, you must only call the sources instantly in the callback, not in the Promise, as this can mess with vide reactivity.
 >
 > ```ts
 > const state = source("foo");
 >
 > useAsync(() => {
+> 	state(); // correct
 > 	return Promise.try(() => {
 > 		task.wait(2);
 > 		state(); // incorrect
@@ -34,7 +35,7 @@ A hook that runs an async function and returns the result and status in a readon
 >
 > useAsync(async () => {
 > 	await Promise.delay(5);
-> 	state("foo"); // unsafe
+> 	state("baz"); // unsafe
 > });
 > ```
 
@@ -49,8 +50,8 @@ async function GetUserId(name: string) {
 
 function Component() {
 	const username = source("PepeElToro41");
-
 	const [userid] = useAsync(() => GetUserId(username()));
+
 	effect(() => print(userid()));
 }
 ```
