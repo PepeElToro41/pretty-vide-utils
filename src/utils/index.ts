@@ -6,7 +6,7 @@ export function lockSource<T>(source: Source<T>): () => T {
 	return () => source();
 }
 
-export function getDerivable<T>(value: Derivable<T> | T): T {
+export function getDerivable<T>(value: Derivable<T>): T {
 	if (typeIs(value, "function")) {
 		return value() as T;
 	} else {
@@ -14,6 +14,6 @@ export function getDerivable<T>(value: Derivable<T> | T): T {
 	}
 }
 
-export function listenSources(sources: Source<unknown>[]) {
+export function listenSources(...sources: (() => unknown)[]) {
 	sources.forEach((source) => source());
 }

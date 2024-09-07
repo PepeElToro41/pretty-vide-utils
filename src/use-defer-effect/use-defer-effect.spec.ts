@@ -3,6 +3,7 @@ import { root, source } from "@rbxts/vide";
 import { useDeferEffect } from ".";
 
 export = () => {
+	FOCUS();
 	const wait = () => {
 		RunService.Heartbeat.Wait();
 		RunService.Heartbeat.Wait();

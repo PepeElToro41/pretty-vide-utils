@@ -51,6 +51,7 @@ export = () => {
 		expect(calls).to.equal(1);
 		rerender(1);
 		destroy();
+		task.wait(0.04);
 		expect(calls).to.equal(1);
 	});
 

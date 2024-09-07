@@ -1,8 +1,12 @@
 {
 	"name": "@rbxts/pretty-vide-utils",
-	"version": "1.0.0",
+	"version": "0.0.2",
 	"description": "Useful utilities for @rbxts/vide",
 	"main": "out/init.lua",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/PepeElToro41/pretty-vide-utils"
+	},
 	"scripts": {
 		"watch": "rbxtsc -w --type=game -p test -i test/include",
 		"dev": "rbxtsc -w --type game --rojo test.project.json",
@@ -20,7 +24,8 @@
 	"files": [
 		"out",
 		"!**/*.tsbuildinfo",
-		"!**/*.spec.lua"
+		"!**/*.spec.lua",
+		"!**/*.spec.d.ts"
 	],
 	"publishConfig": {
 		"access": "public"

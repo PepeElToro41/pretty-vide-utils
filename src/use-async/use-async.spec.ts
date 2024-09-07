@@ -2,6 +2,7 @@ import { root, source } from "@rbxts/vide";
 import { useAsync } from ".";
 
 export = () => {
+	FOCUS();
 	it("should run the promise on mount", () => {
 		const [destroy, result] = root((destroy) => {
 			const [value, status, message] = useAsync(() => Promise.resolve("foo"));
@@ -86,10 +87,14 @@ export = () => {
 		destroy();
 	});
 
-	it("should cancel the promise on unmount", () => {
+	it("should cancel the promise on cleanup", () => {
 		let completions = 0;
 		const destroy = root((destroy) => {
-			useAsync(() => Promise.delay(0).then(() => ++completions));
+			useAsync(() => {
+				return Promise.delay(0).then(() => {
+					completions++;
+				});
+			});
 			return destroy;
 		});
 

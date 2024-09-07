@@ -1,4 +1,4 @@
-import { effect } from "@rbxts/vide";
+import { cleanup, effect } from "@rbxts/vide";
 
 /**
  * Runs an async effect and cancels the promise when unmounting the effect.
@@ -11,8 +11,8 @@ export function useAsyncEffect(callback: () => Promise<void>) {
 	effect(() => {
 		const async = callback();
 
-		return () => {
+		cleanup(() => {
 			async.cancel();
-		};
+		});
 	});
 }

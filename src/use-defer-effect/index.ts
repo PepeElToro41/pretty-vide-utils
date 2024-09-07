@@ -1,4 +1,4 @@
-import { effect } from "@rbxts/vide";
+import { cleanup, effect, untrack } from "@rbxts/vide";
 import { useDeferCallback } from "../use-defer-callback";
 
 /**
@@ -7,11 +7,12 @@ import { useDeferCallback } from "../use-defer-callback";
  * @param dependencies Optional dependencies to trigger the effect
  */
 export function useDeferEffect(defered: () => void, callback: () => void) {
-	const [defer, cancel] = useDeferCallback(defered);
+	const [defer, cancel] = useDeferCallback(() => untrack(defered));
 
 	effect(() => {
 		callback();
 		defer();
-		return cancel;
+
+		cleanup(cancel);
 	});
 }

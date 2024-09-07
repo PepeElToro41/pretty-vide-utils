@@ -1,5 +1,5 @@
 import { setInterval } from "@rbxts/set-timeout";
-import { Derivable, effect } from "@rbxts/vide";
+import { cleanup, Derivable, effect } from "@rbxts/vide";
 import { getDerivable } from "../utils";
 
 export function useInterval(callback: () => void, delay: Derivable<number>, immediate = false) {
@@ -19,7 +19,7 @@ export function useInterval(callback: () => void, delay: Derivable<number>, imme
 		}
 
 		cancel = setInterval(callback, _delay);
-		return clear;
+		cleanup(clear);
 	});
 
 	return clear;

@@ -5,7 +5,7 @@ export function useUpdateEffect(callback: () => (() => void) | void) {
 
 	effect(() => {
 		if (isMounted) {
-			return callback();
+			callback();
 		} else {
 			isMounted = true;
 		}

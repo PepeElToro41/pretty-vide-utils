@@ -1,5 +1,5 @@
 {
-	"name": "package-test",
+	"name": "pretty-vide-utils-test",
 	"globIgnorePaths": ["**/package.json", "**/tsconfig.json"],
 	"tree": {
 		"$className": "DataModel",

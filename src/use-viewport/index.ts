@@ -1,4 +1,4 @@
-import { effect, source } from "@rbxts/vide";
+import { cleanup, effect, source } from "@rbxts/vide";
 import { useCamera } from "../use-camera";
 import { lockSource } from "../utils";
 
@@ -17,7 +17,7 @@ export function useViewport(listener?: (viewport: Vector2) => void) {
 		viewport(_camera.ViewportSize);
 		listener?.(_camera.ViewportSize);
 
-		return () => connection.Disconnect();
+		cleanup(() => connection.Disconnect());
 	});
 
 	return lockSource(viewport);

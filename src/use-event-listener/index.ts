@@ -55,6 +55,7 @@ export function useEventListener<T extends EventLike>(
 	listener: T extends EventLike<infer U> ? U : never,
 ): ReturnType<T> {
 	const connection = connect(event, listener);
+
 	cleanup(() => disconnect(connection));
 	return connection as ReturnType<T>;
 }
