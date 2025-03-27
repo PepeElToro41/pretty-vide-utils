@@ -11,7 +11,7 @@ import { lockSource } from "../utils";
 export function useMouse(listener?: (mouse: Vector2) => void) {
 	const mouse = source(UserInputService.GetMouseLocation());
 
-	useEventListener(UserInputService.InputBegan, (input) => {
+	useEventListener(UserInputService.InputChanged, (input) => {
 		const mouseMovement = input.UserInputType === Enum.UserInputType.MouseMovement;
 		const touch = input.UserInputType === Enum.UserInputType.Touch;
 

@@ -1,4 +1,4 @@
-import { effect, source, untrack } from "@rbxts/vide";
+import { effect, source } from "@rbxts/vide";
 import { lockSource } from "../utils";
 
 function isStrictEqual(a: unknown, b: unknown) {
@@ -20,16 +20,18 @@ type Predicate<T> = (previous: T | undefined, current: T) => boolean;
  * @returns Source with the previous value.
  */
 export function usePrevious<T>(value: () => T, predicate?: Predicate<T>) {
-	const previous = source<T>();
-	predicate = predicate || isStrictEqual;
+    const previous = source<T>();
+	let before = value()
+    
+    predicate = predicate || isStrictEqual;
 
 	effect(() => {
 		const current = value();
-		const old = untrack(previous);
 
-		if (!predicate(old, current)) {
-			previous(current);
+		if (!predicate(current, before)) {
+			previous(before);
 		}
+        before = current
 	});
 
 	return lockSource(previous);

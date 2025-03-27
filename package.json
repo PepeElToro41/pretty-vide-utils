@@ -1,6 +1,6 @@
 {
 	"name": "@rbxts/pretty-vide-utils",
-	"version": "0.0.2",
+	"version": "0.0.4",
 	"description": "Useful utilities for @rbxts/vide",
 	"main": "out/init.lua",
 	"repository": {
@@ -47,7 +47,7 @@
 	"dependencies": {
 		"@rbxts/ripple": "^0.9.0",
 		"@rbxts/set-timeout": "^1.1.2",
-		"@rbxts/vide": "^0.4.5",
+		"@rbxts/vide": "^0.5.0",
 		"@rbxts/services": "^1.5.1"
 	}
 }
