@@ -1,6 +1,6 @@
 {
 	"name": "@rbxts/pretty-vide-utils",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"description": "Useful utilities for @rbxts/vide",
 	"main": "out/init.lua",
 	"repository": {
